@@ -1,0 +1,22 @@
+---
+
+---
+
+<script>
+    import { EditorState, Compartment } from '@codemirror/state';
+    import { EditorView } from '@codemirror/view';
+    import { basicSetup } from 'codemirror';
+    import { javascript } from '@codemirror/lang-javascript';
+
+    const language = new Compartment();
+
+    let startState = EditorState.create({
+        doc: 'Hello World',
+        extensions: [basicSetup, language.of(javascript())],
+    });
+
+    let view = new EditorView({
+        state: startState,
+        parent: document.body,
+    });
+</script>
