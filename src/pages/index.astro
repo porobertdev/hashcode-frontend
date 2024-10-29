@@ -5,12 +5,8 @@ import Editor from '../components/Editor.astro';
 
 <Layout title="HashCode">
     <main>
-        <h1><span class="text-gradient">HashCode</span></h1>
-    </main>
-
-    <section class="code-editor">
         <Editor />
-    </section>
+    </main>
 </Layout>
 
 <style>
@@ -34,12 +30,5 @@ import Editor from '../components/Editor.astro';
         line-height: 1;
         text-align: center;
         margin-bottom: 1em;
-    }
-    .text-gradient {
-        background-image: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 400%;
-        background-position: 0%;
     }
 </style>
