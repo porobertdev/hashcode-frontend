@@ -30,6 +30,10 @@ const expiration = ['1 days', '2 days', '3 days'];
             payload
         );
         console.log('🚀 ~ submitHandler ~ result:', result);
+
+        // redirect user.
+        // @TODO: find if you can redirect using Astro's inbuilt .redirect() method
+        window.location.href = 'pastes/' + result.url;
     }
 
     function extractFormData(form) {
