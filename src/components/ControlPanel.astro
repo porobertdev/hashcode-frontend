@@ -7,7 +7,11 @@ const expiration = ['1 days', '2 days', '3 days'];
 
 <div class="control-panel">
     <form id="controlPanel">
-        <Select name="expiration_time" options={expiration} />
+        <Select
+            name="expiration_time"
+            label="Expiration time"
+            options={expiration}
+        />
 
         <!-- hidden - to set editor's text on `save` before the form submits to API -->
         <input type="hidden" name="code_snippet" id="code_snippet" />

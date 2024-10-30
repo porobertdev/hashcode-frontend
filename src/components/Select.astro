@@ -1,8 +1,9 @@
 ---
-const { name, options } = Astro.props;
+const { name, label, options } = Astro.props;
 ---
 
-<!-- md -->,
+<!-- md -->
+<label for={name} class="text-sm">{label}:</label>
 <select name={name} id={name} class="select select-bordered w-full max-w-xs">
     {options.map((o) => <option>{o}</option>)}
 </select>
