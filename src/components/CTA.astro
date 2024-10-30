@@ -1,0 +1,18 @@
+---
+
+---
+
+<button id="submit_api" class="btn btn-accent" type="submit">Save</button>
+
+<script>
+    const setEditorText = (e) => {
+        console.log(e.target);
+        const hiddenInput = document.getElementById('code_snippet');
+        const editor = document.querySelector('.cm-content');
+
+        hiddenInput.value = editor.innerText;
+    };
+
+    const btn = document.getElementById('submit_api');
+    btn.addEventListener('click', setEditorText);
+</script>

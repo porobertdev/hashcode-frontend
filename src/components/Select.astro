@@ -1,0 +1,8 @@
+---
+const { name, options } = Astro.props;
+---
+
+<!-- md -->,
+<select name={name} id={name} class="select select-bordered w-full max-w-xs">
+    {options.map((o) => <option>{o}</option>)}
+</select>
