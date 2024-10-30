@@ -1,6 +1,8 @@
 ---
-
+const { codesnippet } = Astro.props;
 ---
+
+<div class="codesnippet" data-snippet={codesnippet}></div>
 
 <script>
     import { EditorState, Compartment } from '@codemirror/state';
@@ -9,10 +11,20 @@
     import { javascript } from '@codemirror/lang-javascript';
 
     const language = new Compartment();
+    const isEditorReadonly = window.location.href.includes('/pastes/')
+        ? false
+        : true;
+    const codeSnippet = document
+        .querySelector('div.codesnippet')
+        .getAttribute('data-snippet');
 
     let startState = EditorState.create({
-        doc: 'Hello World',
-        extensions: [basicSetup, language.of(javascript())],
+        doc: !codeSnippet ? "console.log('Hello World!');" : codeSnippet,
+        extensions: [
+            basicSetup,
+            language.of(javascript()),
+            EditorView.editable.of(isEditorReadonly),
+        ],
     });
 
     let view = new EditorView({
@@ -20,3 +32,9 @@
         parent: document.body,
     });
 </script>
+
+<style>
+    div.codesnippet {
+        visibility: hidden;
+    }
+</style>
