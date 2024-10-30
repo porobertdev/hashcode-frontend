@@ -1,0 +1,42 @@
+---
+
+---
+
+<footer>
+    <p>
+        Coded with ❤️ and ☕️ by Robert aka
+        <a href="https://links.porobert.dev" target="__blank">@porobertdev</a>.
+    </p>
+</footer>
+
+<style>
+    :root {
+        --clr-light-green: rgb(117, 237, 117);
+        --clr--footer: rgb(196, 196, 196);
+        --fs-footer: 0.75rem;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 1.5rem;
+        display: flex;
+        justify-content: center;
+        font-size: var(--fs-footer);
+        color: var(--clr--footer);
+
+        /* Ty stackoverflow: https://stackoverflow.com/a/69916213/21600888 */
+        margin-top: auto;
+
+        a,
+        &:visited {
+            color: var(--clr-light-green);
+        }
+
+        a:hover {
+            background-color: var(--clr-light-green);
+            color: black;
+            padding: 0.2rem;
+            border-radius: 10px;
+        }
+    }
+</style>
