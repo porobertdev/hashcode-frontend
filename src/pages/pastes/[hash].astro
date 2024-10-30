@@ -1,3 +1,22 @@
 ---
+import Editor from '../../components/Editor.astro';
+import Layout from '../../layouts/Layout.astro';
 
+// enable SSR for this endpoint
+export const prerender = false;
+
+const { hash } = Astro.params;
+
+const fetchPaste = async () => {
+    const response = await fetch(`http://localhost:3000/api/pastes/${hash}`);
+    const json = await response.json();
+    // console.log('🚀 ~ fetchPaste ~ json:', json);
+    return json;
+};
+
+const data = await fetchPaste();
 ---
+
+<Layout title={hash}>
+    <Editor codesnippet={data.code_snippet} />
+</Layout>
