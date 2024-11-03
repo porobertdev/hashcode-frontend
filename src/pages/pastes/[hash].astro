@@ -8,8 +8,12 @@ export const prerender = false;
 const { hash } = Astro.params;
 
 const fetchPaste = async () => {
-    const response = await fetch(`http://localhost:3000/api/pastes/${hash}`);
+    const API_URL = import.meta.env.PUBLIC_API_URL;
+    console.log('🚀 ~ fetchPaste ~ API_URL:', API_URL);
+
+    const response = await fetch(`${API_URL}/${hash}`);
     const json = await response.json();
+    console.log('🚀 ~ fetchPaste ~ json:', json);
     return json;
 };
 

@@ -20,6 +20,8 @@ const expiration = ['1 days', '2 days', '3 days'];
 </div>
 
 <script>
+    const API_URL = import.meta.env.PUBLIC_API_URL;
+
     // const form = document.querySelector('.control-panel > form');
     const form = document.forms.controlPanel;
     form.addEventListener('submit', submitHandler);
@@ -29,10 +31,7 @@ const expiration = ['1 days', '2 days', '3 days'];
         const payload = extractFormData(form);
         console.log('🚀 ~ submitHandler ~ payload:', payload);
 
-        const result = await savePaste(
-            'http://localhost:3000/api/pastes/',
-            payload
-        );
+        const result = await savePaste(API_URL, payload);
         console.log('🚀 ~ submitHandler ~ result:', result);
 
         // redirect user.
