@@ -1,4 +1,5 @@
 ---
+import CopyCTA from '../../components/CopyCTA.astro';
 import Editor from '../../components/Editor.astro';
 import Layout from '../../layouts/Layout.astro';
 
@@ -21,5 +22,6 @@ const data = await fetchPaste();
 ---
 
 <Layout title={hash}>
+    <CopyCTA />
     <Editor codesnippet={data.error || data.code_snippet} />
 </Layout>

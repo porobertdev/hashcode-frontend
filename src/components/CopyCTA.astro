@@ -1,0 +1,19 @@
+---
+
+---
+
+<button id="copy_snippet" class="btn btn-accent" type="button">Copy</button>
+
+<script>
+    const btn = document.getElementById('copy_snippet');
+
+    const copySnippet = (e) => {
+        // use the `codesnippet` div created by Editor.astro
+        const snippet = document.querySelector('.codesnippet');
+        navigator.clipboard.writeText(snippet.getAttribute('data-snippet'));
+
+        alert('Copied snippet!');
+    };
+
+    btn.addEventListener('click', copySnippet);
+</script>
