@@ -9,8 +9,17 @@ const { codesnippet } = Astro.props;
     import { EditorView } from '@codemirror/view';
     import { basicSetup } from 'codemirror';
     import { javascript } from '@codemirror/lang-javascript';
+    import { ayuLight as lightTheme, dracula as darkTheme } from 'thememirror';
+
+    let theme =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
 
     const language = new Compartment();
+    const themeCompartment = new Compartment();
+
     const isEditorReadonly = window.location.href.includes('/pastes/')
         ? false
         : true;
@@ -24,6 +33,7 @@ const { codesnippet } = Astro.props;
             basicSetup,
             language.of(javascript()),
             EditorView.editable.of(isEditorReadonly),
+            themeCompartment.of(theme === 'light' ? lightTheme : darkTheme),
         ],
     });
 
@@ -31,6 +41,19 @@ const { codesnippet } = Astro.props;
         state: startState,
         parent: document.body,
     });
+
+    window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (event) => {
+            console.log('🚀 ~ .addEventListener ~ event:', event);
+            theme = theme === 'light' ? 'dark' : 'light';
+
+            view.dispatch({
+                effects: themeCompartment.reconfigure(
+                    theme === 'light' ? lightTheme : darkTheme
+                ),
+            });
+        });
 </script>
 
 <style>
