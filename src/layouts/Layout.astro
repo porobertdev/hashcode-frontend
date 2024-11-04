@@ -1,22 +1,49 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import { SEO, type Props as SEOProps } from 'astro-seo';
 
 interface Props {
-    title: string;
+    seo?: SEOProps;
 }
 
-const { title } = Astro.props;
+const { seo } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
+        <title>{seo?.title ?? 'Astro Website'}</title>
+
+        <!-- astro-seo -->
+        <SEO
+            title={seo?.title ??
+                'HashCode - Private and Lightweight Pastebin Alternative for Developers'}
+            description={seo?.description ??
+                'Easily share code snippets with other developers.'}
+            openGraph={{
+                basic: {
+                    title:
+                        seo?.title ??
+                        'HashCode - Private and Lightweight Pastebin Alternative for Developers',
+                    type: seo?.openGraph.basic.type ?? 'object',
+                    image: seo?.openGraph.basic.image ?? '/public/favicon.svg',
+                },
+            }}
+            twitter={{
+                card: seo?.twitter.card ?? 'summary_large_image',
+                creator: seo?.twitter.creator ?? '@porobertdev',
+                title:
+                    seo?.twitter.title ??
+                    'HashCode - Copy-Pasting Service for Developers',
+                description:
+                    seo?.twitter.description ??
+                    'APrivate and Lightweight Code Pasting Service For Developers',
+                image: seo?.twitter.image ?? '/public/favicon.svg',
+            }}
+        />
     </head>
     <body>
         <Navbar />

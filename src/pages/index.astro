@@ -4,7 +4,27 @@ import Editor from '../components/Editor.astro';
 import ControlPanel from '../components/ControlPanel.astro';
 ---
 
-<Layout title="HashCode">
+<Layout
+    seo={{
+        title: 'HashCode - Private and Lightweight Pastebin Alternative for Developers',
+        description: 'Easily share code snippets with other developers.',
+        openGraph: {
+            basic: {
+                title: 'HashCode - Private and Lightweight Pastebin Alternative for Developers',
+                type: 'object',
+                image: '/public/favicon.svg',
+            },
+        },
+        twitter: {
+            card: 'summary_large_image',
+            creator: '@porobertdev',
+            title: 'HashCode - Copy-Pasting Service for Developers',
+            description:
+                'Private and Lightweight Code Pasting Service For Developers',
+            image: '/public/favicon.svg',
+        },
+    }}
+>
     <main>
         <ControlPanel />
         <Editor />

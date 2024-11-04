@@ -21,7 +21,7 @@ const fetchPaste = async () => {
 const data = await fetchPaste();
 ---
 
-<Layout title={hash}>
+<Layout>
     <CopyCTA />
     <Editor codesnippet={data.error || data.code_snippet} />
 </Layout>
