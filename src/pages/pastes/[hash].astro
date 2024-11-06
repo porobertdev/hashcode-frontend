@@ -1,5 +1,5 @@
 ---
-import CopyCTA from '../../components/CopyCTA.astro';
+import ControlPanel from '../../components/ControlPanel.astro';
 import Editor from '../../components/Editor.astro';
 import Layout from '../../layouts/Layout.astro';
 
@@ -23,7 +23,7 @@ const data = await fetchPaste();
 
 <Layout>
     <main>
-        <CopyCTA />
+        <ControlPanel type="read" />
         <Editor codesnippet={data.error || data.code_snippet} />
     </main>
 </Layout>

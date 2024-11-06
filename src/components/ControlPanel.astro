@@ -1,22 +1,28 @@
 ---
 import Select from './Select.astro';
 import CTA from './CTA.astro';
+import CopyCTA from './CopyCTA.astro';
 
+const { type } = Astro.props;
 const expiration = ['1 days', '2 days', '3 days'];
 ---
 
 <div class="control-panel">
-    <form id="controlPanel">
-        <Select
-            name="expiration_time"
-            label="Expiration time"
-            options={expiration}
-        />
+    {type === 'create'
+        ?
+            <form id="controlPanel">
+                <Select
+                    name="expiration_time"
+                    label="Expiration time"
+                    options={expiration}
+                />
 
-        <!-- hidden - to set editor's text on `save` before the form submits to API -->
-        <input type="hidden" name="code_snippet" id="code_snippet" />
-        <CTA />
-    </form>
+                <!-- hidden - to set editor's text on `save` before the form submits to API -->
+                <input type="hidden" name="code_snippet" id="code_snippet" />
+                <CTA />
+            </form>
+        : <CopyCTA />    
+    }
 </div>
 
 <script>
