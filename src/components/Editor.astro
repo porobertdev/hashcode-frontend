@@ -39,7 +39,7 @@ const { codesnippet } = Astro.props;
 
     let view = new EditorView({
         state: startState,
-        parent: document.body,
+        parent: document.querySelector('main'),
     });
 
     window

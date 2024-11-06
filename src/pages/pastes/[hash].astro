@@ -22,6 +22,8 @@ const data = await fetchPaste();
 ---
 
 <Layout>
-    <CopyCTA />
-    <Editor codesnippet={data.error || data.code_snippet} />
+    <main>
+        <CopyCTA />
+        <Editor codesnippet={data.error || data.code_snippet} />
+    </main>
 </Layout>
