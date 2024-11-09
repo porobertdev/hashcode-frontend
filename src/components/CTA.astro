@@ -2,15 +2,20 @@
 
 ---
 
-<button id="submit_api" class="btn btn-accent" type="submit">Save</button>
+<button id="submit_api" class="btn btn-accent" type="submit"
+    ><span class="loading loading-spinner loading-sm hidden"></span>
+    Save</button
+>
 
 <script>
     const setEditorText = (e) => {
         console.log(e.target);
         const hiddenInput = document.getElementById('code_snippet');
         const editor = document.querySelector('.cm-content');
+        const loading = document.querySelector('span.loading');
 
         hiddenInput.value = editor.innerText;
+        loading.classList.toggle('hidden');
     };
 
     const btn = document.getElementById('submit_api');
